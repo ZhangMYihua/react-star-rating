@@ -5,6 +5,7 @@
 .star-rating {
   color: black;
   cursor: pointer;
+  font-size: 40px;
 }
 
 .star-rating.active {

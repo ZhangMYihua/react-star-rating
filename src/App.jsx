@@ -5,11 +5,12 @@ import StarRating from './star-rating.component';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [productRating, setProductRating] = useState(0);
 
   return (
     <div className='App'>
-      <StarRating />
+      <h2>Current Rating: {productRating}</h2>
+      <StarRating onChange={setProductRating} />
     </div>
   );
 }

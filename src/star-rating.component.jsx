@@ -1,17 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
-import Star from './star.component';
 import './star-rating.styles.css';
 
-const StarRating = ({ maxRating = 5 }) => {
+const StarRating = ({ maxRating = 5, onChange = () => {} }) => {
   const [currentRating, setCurrentRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
 
-  const setRatingClickHandler = (ratingValue) => {
-    currentRating === ratingValue
-      ? setCurrentRating(0)
-      : setCurrentRating(ratingValue);
-  };
+  useEffect(() => {
+    onChange(currentRating);
+  }, [currentRating]);
+
+  const setRatingClickHandler = useCallback(
+    (ratingValue) => {
+      currentRating === ratingValue
+        ? setCurrentRating(0)
+        : setCurrentRating(ratingValue);
+    },
+    [currentRating]
+  );
 
   return (
     <div className='star-rating-container'>
